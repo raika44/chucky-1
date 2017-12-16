@@ -35,7 +35,7 @@ cl
 
 kd2 = kk = kb = ke = kc
 
-kd = kt = ko = ka
+ks2 = kd = kt = ko = ka
 
 kk2 = kt2 = ki = ku = ks
 
