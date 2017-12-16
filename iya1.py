@@ -31,11 +31,11 @@ ki.loginResult()
 
 cl
 
-kt2 = kk = kt
+ke = ka = kt2 = kk = kt
 
-kd = ki2 = ks2 = ks
+kb = kd = ki2 = ks2 = ks
 
-kc = kk2 = ki
+ko = kc = kk2 = ki
 print "TEAM HARUKA"
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -227,6 +227,7 @@ SEMUANYA
 
 =======================
 """
+DEF=[ka,kb,ko,ke,ku]
 KAC=[cl,ki,kk,kc,ks,kt]
 mid = cl.getProfile().mid
 Amid = ki.getProfile().mid
@@ -239,6 +240,11 @@ Gmid = kt2.getProfile().mid
 Hmid = ks2.getProfile().mid
 Imid = kk2.getProfile().mid
 Jmid = kd.getProfile().mid
+Kmid = ka.getProfile().mid
+Lmid = kb.getProfile().mid
+Mmid = ko.getProfile().mid
+Nmid = ke.getProfile().mid
+Omid = ku.getProfile().mid
 
 protectname = []
 protecturl = []
@@ -247,7 +253,7 @@ autoinvite = []
 protection = []
 autoleaveroom = []
 targets = []
-Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid,Jmid,"u5427d8047ab127f5e237eaedd1f0b93b"]
+Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid,Jmid,Kmid,Lmid,Mmid,Nmid,Omid,"u5427d8047ab127f5e237eaedd1f0b93b"]
 admin = ["u5427d8047ab127f5e237eaedd1f0b93b"]
 admsa = ["u5427d8047ab127f5e237eaedd1f0b93b"]
 owner = ["u5427d8047ab127f5e237eaedd1f0b93b"]
@@ -797,8 +803,8 @@ def bot(op):
                if op.param2 not in Bots:
                    G = ka.getGroup(op.param1)
                    G.preventJoinByTicket = True
-                   random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
-                   random.choice(KAC).updateGroup(G)
+                   random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
+                   random.choice(DEF).updateGroup(G)
         #------Protect Group Kick finish-----#
          
         if op.type == 13:
@@ -813,8 +819,7 @@ def bot(op):
             if not op.param2 in Bots and admin:
                 if wait["protectionOn"] == True: 
                     try:
-                        klist=[ki,kk,kc,ks,kt]
-                        kicker = random.choice(klist) 
+                        kicker = random.choice(DEF) 
                         G = kicker.getGroup(op.param1)
                         kicker.kickoutFromGroup(op.param1,[op.param2])
                         kicker.inviteIntoGroup(op.param1, [op.param3])
@@ -923,7 +928,7 @@ def bot(op):
         if op.type == 17:
             if op.param3 in wait["blacklist"]:
                 if not op.param2 in Bots and admin: 
-                    random.choice(KAC).kickoutFromGroup(op.param1,[op.param3])
+                    random.choice(DEF).kickoutFromGroup(op.param1,[op.param3])
                     cl.sendText(op.param1,"blacklist users are not allowed to sign in  -_-")
                     c = Message(to=op.param1, from_=None, text=None, contentType=13)
                     c.contentMetadata={'mid':op.param3}
@@ -968,8 +973,7 @@ def bot(op):
             I = G.creator
             if not op.param2 in Bots and admin:
                 if wait["protectionOn"] == True:  
-                    klist=[ki,kk,kc,ks,kt]
-                    kicker = random.choice(klist)
+                    kicker = random.choice(DEF)
                     G = kicker.getGroup(op.param1)
                     if G is not None:
                         gInviMids = [contact.mid for contact in G.invitee]
@@ -981,16 +985,18 @@ def bot(op):
                         cl.sendMessage(c)
         if op.type == 15:
              if op.param2 in admin:
+                random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
                 random.choice(KAC).inviteIntoGroup(op.param1,[op.param2])
         if op.type == 19:
              if op.param2 in Bots:
                    if op.param3 in admin:
+                      random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
                       random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
         if op.type == 19:
              if not op.param2 in Bots:
                    if op.param3 in admin:
-                      random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
-                      random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                      random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
+                      random.choice(DEF).inviteIntoGroup(op.param1, [op.param3])
         if op.type == 19:
                 if not op.param2 in Bots:
                     try:
@@ -1016,8 +1022,7 @@ def bot(op):
                 if not op.param2 in Bots and admin:
                   if wait["protectionOn"] == True:  
                    try:
-                       klist=[ki,kk,kc,ks,kt,kt2,kk2,ks2,ki2]
-                       kicker = random.choice(klist)
+                       kicker = random.choice(DEF)
                        G = kicker.getGroup(op.param1)
                        G.preventJoinByTicket = False
                        kicker.updateGroup(G)
@@ -1060,9 +1065,12 @@ def bot(op):
                         pass                   
                     try:
                         ki.kickoutFromGroup(op.param1,[op.param2])
+                        ka.kickoutFromGroup(op.param1,[op.param2])
+                        kc.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client Kick regulation or Because it does not exist in the group、\n["+op.param1+"]\nの\n["+op.param2+"]\nを蹴る事ができませんでした。\nブラックリストに追加します。")
                         if op.param2 in wait["blacklist"]:
@@ -1081,6 +1089,10 @@ def bot(op):
                     kc.acceptGroupInvitationByTicket(op.param1,Ti)
                     ks.acceptGroupInvitationByTicket(op.param1,Ti)
                     kt.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ka.acceptGroupInvitationByTicket(op.param1,Ti)
+                    kb.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ko.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ke.acceptGroupInvitationByTicket(op.param1,Ti)
                     X = cl.getGroup(op.param1)
                     X.preventJoinByTicket = True
                     cl.updateGroup(X)
@@ -1097,9 +1109,12 @@ def bot(op):
                         pass                    
                     try:
                         kk.kickoutFromGroup(op.param1,[op.param2])
+                        kb.kickoutFromGroup(op.param1,[op.param2])
+                        kt.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client が蹴り規制orグループに存在しない為、\n["+op.param1+"]\nの\n["+op.param2+"]\nBecause the client does not exist in the kick regulation or group.\nAdd it to the blacklist.")
                         if op.param2 in wait["blacklist"]:
@@ -1119,6 +1134,10 @@ def bot(op):
                     kc.acceptGroupInvitationByTicket(op.param1,Ti)
                     ks.acceptGroupInvitationByTicket(op.param1,Ti)
                     kt.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ka.acceptGroupInvitationByTicket(op.param1,Ti)
+                    kb.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ko.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ke.acceptGroupInvitationByTicket(op.param1,Ti)
                     X = ki.getGroup(op.param1)
                     X.preventJoinByTicket = True
                     ki.updateGroup(X)
@@ -1138,6 +1157,7 @@ def bot(op):
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client が蹴り規制orグループに存在しない為、\n["+op.param1+"]\nの\n["+op.param2+"]\nBecause the client does not exist in the kick regulation or group.\nAdd it to the blacklist.")
                         if op.param2 in wait["blacklist"]:
@@ -1161,6 +1181,10 @@ def bot(op):
                     ks2.acceptGroupInvitationByTicket(op.param1,Ti)
                     ki2.acceptGroupInvitationByTicket(op.param1,Ti)
                     kk2.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ka.acceptGroupInvitationByTicket(op.param1,Ti)
+                    kb.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ko.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ke.acceptGroupInvitationByTicket(op.param1,Ti)
                     X = kk.getGroup(op.param1)
                     X.preventJoinByTicket = True
                     kk.updateGroup(X)
@@ -1177,9 +1201,12 @@ def bot(op):
                         pass                    
                     try:
                         kd.kickoutFromGroup(op.param1,[op.param2])
+                        kk2.kickoutFromGroup(op.param1,[op.param2])
+                        kk.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client が蹴り規制orグループに存在しない為、\n["+op.param1+"]\nの\n["+op.param2+"]\nBecause the client does not exist in the kick regulation or group.\nAdd it to the blacklist.")
                         if op.param2 in wait["blacklist"]:
@@ -1199,6 +1226,10 @@ def bot(op):
                     kc.acceptGroupInvitationByTicket(op.param1,Ti)
                     ks.acceptGroupInvitationByTicket(op.param1,Ti)
                     kt.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ka.acceptGroupInvitationByTicket(op.param1,Ti)
+                    kb.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ko.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ke.acceptGroupInvitationByTicket(op.param1,Ti)
                     X = kc.getGroup(op.param1)
                     X.preventJoinByTicket = True
                     kc.updateGroup(X)
@@ -1215,9 +1246,12 @@ def bot(op):
                         pass                    
                     try:
                         ke.kickoutFromGroup(op.param1,[op.param2])
+                        kd.kickoutFromGroup(op.param1,[op.param2])
+                        kc.kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client が蹴り規制orグループに存在しない為、\n["+op.param1+"]\nの\n["+op.param2+"]\nBecause the client does not exist in the kick regulation or group.\nAdd it to the blacklist.")
                         if op.param2 in wait["blacklist"]:
@@ -1237,6 +1271,10 @@ def bot(op):
                     kc.acceptGroupInvitationByTicket(op.param1,Ti)
                     ks.acceptGroupInvitationByTicket(op.param1,Ti)
                     kt.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ka.acceptGroupInvitationByTicket(op.param1,Ti)
+                    kb.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ko.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ke.acceptGroupInvitationByTicket(op.param1,Ti)
                     X = kd.getGroup(op.param1)
                     X.preventJoinByTicket = True
                     kd.updateGroup(X)
@@ -1256,6 +1294,7 @@ def bot(op):
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client が蹴り規制orグループに存在しない為、\n["+op.param1+"]\nの\n["+op.param2+"]\nBecause the client does not exist in the kick regulation or group.\nAdd it to the blacklist.")
                         if op.param2 in wait["blacklist"]:
@@ -1275,6 +1314,10 @@ def bot(op):
                     kc.acceptGroupInvitationByTicket(op.param1,Ti)
                     ks.acceptGroupInvitationByTicket(op.param1,Ti)
                     kt.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ka.acceptGroupInvitationByTicket(op.param1,Ti)
+                    kb.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ko.acceptGroupInvitationByTicket(op.param1,Ti)
+                    ke.acceptGroupInvitationByTicket(op.param1,Ti)
                     X = ke.getGroup(op.param1)
                     X.preventJoinByTicket = True
                     ke.updateGroup(X)
@@ -1290,10 +1333,11 @@ def bot(op):
                     if op.param2 in Bots and admin:
                         pass                    
                     try:
-                        kg.kickoutFromGroup(op.param1,[op.param2])
+                        random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client が蹴り規制orグループに存在しない為、\n["+op.param1+"]\nの\n["+op.param2+"]\nBecause the client does not exist in the kick regulation or group.\nAdd it to the blacklist.")
                         if op.param2 in wait["blacklist"]:
@@ -1338,10 +1382,11 @@ def bot(op):
                     if op.param2 in Bots:
                         pass                    
                     try:
-                        kh.kickoutFromGroup(op.param1,[op.param2])
+                        random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client が蹴り規制orグループに存在しない為、\n["+op.param1+"]\nの\n["+op.param2+"]\nBecause the client does not exist in the kick regulation or group.\nAdd it to the blacklist.")
                         if op.param2 in wait["blacklist"]:
@@ -1386,10 +1431,11 @@ def bot(op):
                     if op.param2 in Bots:
                         pass                    
                     try:
-                        kj.kickoutFromGroup(op.param1,[op.param2])
+                        random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client が蹴り規制orグループに存在しない為、\n["+op.param1+"]\nの\n["+op.param2+"]\nBecause the client does not exist in the kick regulation or group.\nAdd it to the blacklist.")
                         if op.param2 in wait["blacklist"]:
@@ -1434,10 +1480,11 @@ def bot(op):
                     if op.param2 in Bots:
                         pass                    
                     try:
-                        cl.kickoutFromGroup(op.param1,[op.param2])
+                        random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client が蹴り規制orグループに存在しない為、\n["+op.param1+"]\nの\n["+op.param2+"]\nBecause the client does not exist in the kick regulation or group.\nAdd it to the blacklist.")
                         if op.param2 in wait["blacklist"]:
@@ -1482,10 +1529,11 @@ def bot(op):
                     if op.param2 in Bots:
                         pass                   
                     try:
-                        ko.kickoutFromGroup(op.param1,[op.param2])
+                        random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
                     except:
                         try:
                             random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                       	    random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                         except:
                             print ("client Kick regulation or Because it does not exist in the group、\n["+op.param1+"]\nの\n["+op.param2+"]\nを蹴る事ができませんでした。\nブラックリストに追加します。")
                         if op.param2 in wait["blacklist"]:
