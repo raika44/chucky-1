@@ -5049,7 +5049,7 @@ def bot(op):
             elif 'apakah' in msg.text.lower():
                 tanya = msg.text.lower().replace("apakah","")
                 jawab = ("Ya","Tidak","Mungkin","Bisa jadi")
-                jawaban = random.choice(jawab)
+                p = random.choice(jawab)
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
