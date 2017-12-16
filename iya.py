@@ -848,6 +848,24 @@ def NOTIFIED_READ_MESSAGE(op):
     except:
         pass
 
+def RECEIVE_MESSAGE(op):
+    msg = op.message
+    try:
+        if msg.contentType == 0:
+            try:
+                if msg.to in wait2['readPoint']:
+                    if msg.from_ in wait2["ROM"][msg.to]:
+                        del wait2["ROM"][msg.to][msg.from_]
+                else:
+                    pass
+            except:
+                pass
+        else:
+            pass
+          
+    except KeyboardInterrupt:
+				sys.exit(0)
+
 def bot(op):
     try:
         if op.type == 0:
@@ -1038,6 +1056,22 @@ def bot(op):
                    random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
                
         #------Joined User Kick start------#
+
+        if op.type == 55:
+            try:
+                if op.param1 in wait2['readPoint']:
+                    Name = cl.getContact(op.param2).displayName
+                    if Name in wait2['readMember'][op.param1]:
+                        pass
+                    else:
+                        wait2['readMember'][op.param1] += "\n・ " + Name + datetime.today().strftime(' [%d - %H:%M:%S]')
+                        wait2['ROM'][op.param1][op.param2] = "・ " + Name
+                        wait2['setTime'][msg.to] = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+                else:
+                    pass
+            except:
+                pass
+	
         if op.type == 26:
             msg = op.message
             if msg.to in settings["simiSimi"]:
