@@ -3466,7 +3466,7 @@ def bot(op):
                        ks.sendText(g.mid,"Spammed")
                        kk.sendText(g.mid,"Spammed")
                        kt.sendText(g.mid,"Spammed")
-                       ct.sendText(msg.to,"done spam bossque")
+                       cl.sendText(msg.to,"done spam bossque")
 
 #-----------------------------------------------
             elif msg.text in ["Rejectall"]:
