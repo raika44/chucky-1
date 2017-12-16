@@ -380,8 +380,13 @@ Gmid = ko.getProfile().mid
 Hmid = ke.getProfile().mid
 Imid = ku.getProfile().mid
 Jmid = kt.getProfile().mid
+Kmid = ki2.getProfile().mid
+Lmid = kt2.getProfile().mid
+Mmid = ks2.getProfile().mid
+Nmid = kk2.getProfile().mid
+Omid = kd.getProfile().mid
 
-Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid,Jmid,"u5427d8047ab127f5e237eaedd1f0b93b"]
+Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid,Jmid,Kmid,Lmid,Mmid,Nmid,Omid,"u5427d8047ab127f5e237eaedd1f0b93b"]
 admin=["u5427d8047ab127f5e237eaedd1f0b93b"]
 creator=["u5427d8047ab127f5e237eaedd1f0b93b"]
 wait = {
@@ -408,6 +413,7 @@ wait = {
     "likeOn":False,
     "welcomemsg":True,
     "winvite":True,
+    "autorein":True,
     "Protectjoin":False,
     "Protectcancl":False,
     "protectionOn":True,
@@ -794,6 +800,46 @@ def bot(op):
                   gMembMids = [contact.mid for contact in group.invitee]
                   random.choice(DEF).cancelGroupInvitation(op.param1, gMembMids)
       #------Cancel Invite User Finish------#
+
+        if op.type == 26:
+            msg = op.message
+            if msg.contentType == 13:
+            	if wait["winvite"] == True:
+                     if msg.from_ in admin:
+                         _name = msg.contentMetadata["displayName"]
+                         invite = msg.contentMetadata["mid"]
+                         groups = cl.getGroup(msg.to)
+                         pending = groups.invitee
+                         targets = []
+                         for s in groups.members:
+                             if _name in s.displayName:
+                                 cl.sendText(msg.to,"-> " + _name + " was here")
+                                 break
+                             elif invite in wait["blacklist"]:
+                                 ki.sendText(msg.to,"Sorry, " + _name + " On Blacklist")
+                                 ki.sendText(msg.to,"Call my owner to use command !, \n➡Unban: " + invite)
+                                 break                             
+                             else:
+                                 targets.append(invite)
+                         if targets == []:
+                             pass
+                         else:
+                             for target in targets:
+                                 try:
+                                     cl.findAndAddContactsByMid(target)
+                                     cl.inviteIntoGroup(msg.to,[target])
+                                     cl.sendText(msg.to,"Done Invite : \n➡" + _name)
+                                     wait["winvite"] = False
+                                     break
+                                 except:
+                                     try:
+                                         ki.findAndAddContactsByMid(invite)
+                                         ki.inviteIntoGroup(op.param1,[invite])
+                                         wait["winvite"] = False
+                                     except:
+                                         cl.sendText(msg.to,"Negative, Error detected")
+                                         wait["winvite"] = False
+                                         break
 
 
         if op.type == 13:
@@ -2923,10 +2969,6 @@ def bot(op):
                     else:
                         cl.sendText(msg.to,"welcome message off\n\n"+ datetime.today().strftime('%H:%M:%S'))
 			
-            elif msg.text in ["Invite user"]:
-              if msg.from_ in admin:
-                 wait["winvite"] = True
-                 cl.sendText(msg.to,"send contact")
 #============================================================
             elif "Steal mid" in msg.text:
               if msg.from_ in admin:
@@ -2969,7 +3011,60 @@ def bot(op):
                     if wait["lang"] == "JP":
                         cl.sendText(msg.to,"Already。")
 #==========================================================
-         
+            elif msg.text == "Lurking":
+              if msg.from_ in admin:
+                    cl.sendText(msg.to, "Set point.")
+                    try:
+                        del wait2['readPoint'][msg.to]
+                        del wait2['readMember'][msg.to]
+                    except:
+                           pass
+                    now2 = datetime.now()
+                    wait2['readPoint'][msg.to] = msg.id
+                    wait2['readMember'][msg.to] = ""
+                    wait2['setTime'][msg.to] = datetime.now().strftime('%Y-%m-%d %H:%M')
+                    wait2['ROM'][msg.to] = {}
+                    print wait2
+            elif msg.text == "Lurking result":
+              if msg.from_ in admin:
+                    if msg.to in wait2['readPoint']:
+                        if wait2["ROM"][msg.to].items() == []:
+                            chiya = ""
+                        else:
+                            chiya = ""
+                            for rom in wait2["ROM"][msg.to].items():
+                                print rom
+                                chiya += rom[1] + "\n"
+                        cl.sendText(msg.to, "╔═══════════════%s\n╠════════════════\n%s╠═══════════════\n║Readig point creation:\n║ [%s]\n╚════════════════"  % (wait2['readMember'][msg.to],chiya,setTime[msg.to]))
+                    else:
+                        cl.sendText(msg.to, "anda slah ketik-_-")
+			
+	    elif msg.text in ["Reinvite:off","auto reinvite:off"]:
+              if msg.from_ in admin:
+                if wait["autorein"] == False:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to, "Already off\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"Already off\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                else:
+                    wait["autorein"] = False
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to, "Already off\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"Already off\n\n"+ datetime.today().strftime('%H:%M:%S'))
+            elif msg.text in ["Reinvite:on","auto reinvite:on"]:
+              if msg.from_ in admin:
+                if wait["autorein"] == True:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to, "Already on\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to ,"Already on\n"+ datetime.today().strftime('%H:%M:%S'))
+                else:
+                    wait["autorein"] = True
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to, "Already on\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"Already on\n"+ datetime.today().strftime('%H:%M:%S'))
          #-------------Fungsi Change Clock Start------------------#
             elif msg.text in ["Change clock"]:
                 n = msg.text.replace("Change clock","")
@@ -4916,6 +5011,39 @@ def likefriend():
       else:
           print "Already Liked"
 time.sleep(0.60)
+
+def autoSta():
+    count = 1
+    while True:
+        try:
+           for posts in cl.activity(1)["result"]["posts"]:
+             if posts["postInfo"]["liked"] is False:
+                if wait["likeOn"] == True:
+                   cl.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
+                   ki.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
+                   kk.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
+                   kc.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
+                   ks.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
+                   kt.like(posts["userInfo"]["writerMid"], posts["postInfo"]["postId"], 1001)
+                   if wait["commentOn"] == True:
+                      if posts["userInfo"]["writerMid"] in wait["commentBlack"]:
+                         pass
+                      else:
+                          cl.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
+                          ki.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
+                          kk.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
+                          kc.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
+                          ks.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
+                          kt.comment(posts["userInfo"]["writerMid"],posts["postInfo"]["postId"],wait["comment"])
+        except:
+            count += 1
+            if(count == 50):
+                sys.exit(0)
+            else:
+                pass
+thread1 = threading.Thread(target=autoSta)
+thread1.daemon = True
+thread1.start()
 
 while True:
     try:
