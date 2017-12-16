@@ -1616,9 +1616,9 @@ def bot(op):
                 else:
                     cl.sendText(msg.to,helpt)
 		
-            elif "Invite:" in msg.text:
+            elif "/invite:" in msg.text:
               if msg.from_ in admin:
-                midd = msg.text.replace("Invite:"," ")
+                midd = msg.text.replace("/invite:"," ")
                 cl.findAndAddContactsByMid(midd)
                 cl.inviteIntoGroup(msg.to,[midd])
             
@@ -1692,7 +1692,7 @@ def bot(op):
               if msg.from_ in admin:
                 midd = msg.text.replace("_fourth kick ","")
                 kc.kickoutFromGroup(msg.to,[midd])
-            elif "Invite " in msg.text:
+            elif "/invite " in msg.text:
               if msg.from_ in admin:
                 midd = msg.text.replace("Invite ","")
                 cl.findAndAddContactsByMid(midd)
@@ -2918,6 +2918,7 @@ def bot(op):
               if msg.from_ in admin:
                  wait["winvite"] = True
                  cl.sendText(msg.to,"send contact")
+		
             elif msg.text in ["Myname"]:
                 h = cl.getContact(mid)
                 cl.sendText(msg.to,"===[DisplayName]===\n" + h.displayName)
