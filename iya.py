@@ -5051,7 +5051,10 @@ def bot(op):
                 tanya = msg.text.lower().replace("apakah","")
                 jawab = ("Ya","Tidak","Mungkin","Bisa jadi")
                 jawaban = random.choice(jawab)
-                cl.sendText(msg.to,jawaban)
+                lang = 'id'
+                tts = gTTS(text=p, lang=lang)
+                tts.save("hasil.mp3")
+                cl.sendAudio(msg.to,"hasil.mp3")
 		
             elif "/berapakah " in msg.text:
                 apk = msg.text.replace("/berapakah ","")
@@ -5073,15 +5076,6 @@ def bot(op):
                 rnd = ["kapan kapan","besok","satu abad lagi","Hari ini","Tahun depan","Minggu depan","Bulan depan","Sebentar lagi","Tidak Akan Pernah"]
                 p = random.choice(rnd)
                 cl.sendText(msg.to,p)
-                lang = 'id'
-                tts = gTTS(text=p, lang=lang)
-                tts.save("hasil.mp3")
-                cl.sendAudio(msg.to,"hasil.mp3")
-            elif 'apakah' in msg.text.lower():
-              if msg.from_ in admin:
-                tanya = msg.text.lower().replace("apakah","")
-                jawab = ("Ya","Tidak","Mungkin","Bisa jadi")
-                jawaban = random.choice(jawab)
                 lang = 'id'
                 tts = gTTS(text=p, lang=lang)
                 tts.save("hasil.mp3")
