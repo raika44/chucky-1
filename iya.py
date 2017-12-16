@@ -3363,9 +3363,9 @@ def bot(op):
                     else:
                         cl.sendText(msg.to, "An already read point has not been set.\n「set」you can send ♪ read point will be created ♪")
 #-----------------------------------------------
-            elif "pam @" in msg.text:
+            elif "Pam @" in msg.text:
               if msg.from_ in admin:
-                _name = msg.text.replace("pam @","")
+                _name = msg.text.replace("Pam @","")
                 _nametarget = _name.rstrip(' ')
                 gs = cl.getGroup(msg.to)
                 for g in gs.members:
@@ -5033,8 +5033,8 @@ def bot(op):
                 p = random.choice(rnd)
                 cl.sendText(msg.to,p)
 		
-            elif "kapan " in msg.text:
-                apk = msg.text.replace("kapan ","")
+            elif "Kapan " in msg.text:
+                apk = msg.text.replace("Kapan ","")
                 rnd = ["kapan kapan","besok","satu abad lagi","Hari ini","Tahun depan","Minggu depan","Bulan depan","Sebentar lagi","Tidak Akan Pernah"]
                 p = random.choice(rnd)
                 lang = 'id'
