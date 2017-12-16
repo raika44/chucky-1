@@ -413,7 +413,7 @@ wait = {
     "Protectgr":True,
     "likeOn":False,
     "welcomemsg":True,
-    "winvite":True,
+    "winvite":False,
     "autorein":True,
     "Protectjoin":False,
     "Protectcancl":False,
