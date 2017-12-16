@@ -35,7 +35,7 @@ ke = ka = kt2 = kk = kt
 
 kb = kd = ki2 = ks2 = ks
 
-ko = kc = kk2 = ki
+ku = ko = kc = kk2 = ki
 print "TEAM HARUKA"
 reload(sys)
 sys.setdefaultencoding('utf-8')
