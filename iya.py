@@ -1615,45 +1615,6 @@ def bot(op):
                 else:
                     cl.sendText(msg.to,helpt)
 		
-        if op.type == 26:
-            msg = op.message
-            if msg.contentType == 13:
-            	if wait["winvite"] == True:
-                     if msg.from_ in admin:
-                         _name = msg.contentMetadata["displayName"]
-                         invite = msg.contentMetadata["mid"]
-                         groups = cl.getGroup(msg.to)
-                         pending = groups.invitee
-                         targets = []
-                         for s in groups.members:
-                             if _name in s.displayName:
-                                 cl.sendText(msg.to,"-> " + _name + " was here")
-                                 break
-                             elif invite in wait["blacklist"]:
-                                 ki.sendText(msg.to,"Sorry, " + _name + " On Blacklist")
-                                 ki.sendText(msg.to,"Call my owner to use command !, \n➡Unban: " + invite)
-                                 break                             
-                             else:
-                                 targets.append(invite)
-                         if targets == []:
-                             pass
-                         else:
-                             for target in targets:
-                                 try:
-                                     cl.findAndAddContactsByMid(target)
-                                     cl.inviteIntoGroup(msg.to,[target])
-                                     cl.sendText(msg.to,"Done Invite : \n➡" + _name)
-                                     wait["winvite"] = False
-                                     break
-                                 except:
-                                     try:
-                                         ki.findAndAddContactsByMid(invite)
-                                         ki.inviteIntoGroup(op.param1,[invite])
-                                         wait["winvite"] = False
-                                     except:
-                                         cl.sendText(msg.to,"Negative, Error detected")
-                                         wait["winvite"] = False
-                                         break
             elif "Invite:" in msg.text:
               if msg.from_ in admin:
                 midd = msg.text.replace("Invite:"," ")
