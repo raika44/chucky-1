@@ -284,6 +284,8 @@ wait = {
     "welcomemsg":True,
     "Backup":False,
     "Protectgr":True,
+    "SetKey":".",
+    "Pap":"http://kucingpedia.com/wp-content/uploads/2016/06/Gambar-Kucing-Gemuk-Lucu.jpg",
     "protectionOn":True,
     "winvite":False,
     "pnharfbot":{},
@@ -805,6 +807,11 @@ def bot(op):
                    G.preventJoinByTicket = True
                    random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
                    random.choice(DEF).updateGroup(G)
+                   cl.sendText(op.param1,"please do not open link group-_-")
+                   c = Message(to=op.param1, from_=None, text=None, contentType=13)
+                   c.contentMetadata={'mid':op.param2}
+                   cl.sendMessage(c)
+
         #------Protect Group Kick finish-----#
          
         if op.type == 13:
@@ -815,16 +822,6 @@ def bot(op):
                   random.choice(KAC).cancelGroupInvitation(op.param1, gMembMids)
                 
 #===========================================
-        if op.type == 32:
-            if not op.param2 in Bots and admin:
-                if wait["protectionOn"] == True: 
-                    try:
-                        kicker = random.choice(DEF) 
-                        G = kicker.getGroup(op.param1)
-                        kicker.kickoutFromGroup(op.param1,[op.param2])
-                        kicker.inviteIntoGroup(op.param1, [op.param3])
-                    except Exception, e:
-                       print e
         if op.type == 13:
             if mid in op.param3:
                 G = cl.getGroup(op.param1)
@@ -949,40 +946,7 @@ def bot(op):
                     kicker.updateGroup(G)
                 except Exception, e:
                     print e
-        if op.type == 11:
-            if not op.param2 in Bots and admin:
-              if wait["protectionOn"] == True:
-                 try:                    
-                    klist=[ki,kk,kc,ks,kt,kt2,ks2,ki2,kk2]
-                    kicker = random.choice(klist) 
-                    G = kicker.getGroup(op.param1)
-                    G.preventJoinByTicket = True
-                    kicker.updateGroup(G)
-                    kicker.kickoutFromGroup(op.param1,[op.param2])
-                    G.preventJoinByTicket = True
-                    kicker.updateGroup(G)
-                    cl.sendText(op.param1,"please do not open link group-_-")
-                    c = Message(to=op.param1, from_=None, text=None, contentType=13)
-                    c.contentMetadata={'mid':op.param2}
-                    cl.sendMessage(c)
-
-                 except Exception, e:
-                           print e
-        if op.type == 13:
-            G = cl.getGroup(op.param1)
-            I = G.creator
-            if not op.param2 in Bots and admin:
-                if wait["protectionOn"] == True:  
-                    kicker = random.choice(DEF)
-                    G = kicker.getGroup(op.param1)
-                    if G is not None:
-                        gInviMids = [contact.mid for contact in G.invitee]
-                        kicker.cancelGroupInvitation(op.param1, gInviMids)
-                        kicker.kickoutFromGroup(op.param1,[op.param2])
-                        cl.sendText(op.param1,"you are prohibited from inviting-_-")
-                        c = Message(to=op.param1, from_=None, text=None, contentType=13)
-                        c.contentMetadata={'mid':op.param2}
-                        cl.sendMessage(c)
+		
         if op.type == 15:
              if op.param2 in admin:
                 random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
@@ -1019,25 +983,6 @@ def bot(op):
                         random.choice(KAC).inviteIntoGroup(op.param1, [op.param3])
                     except Exception, e:
                         print e
-                if not op.param2 in Bots and admin:
-                  if wait["protectionOn"] == True:  
-                   try:
-                       kicker = random.choice(DEF)
-                       G = kicker.getGroup(op.param1)
-                       G.preventJoinByTicket = False
-                       kicker.updateGroup(G)
-                       invsend = 0
-                       Ticket = kicker.reissueGroupTicket(op.param1)
-                       kl.acceptGroupInvitationByTicket(op.param1,Ticket)
-                       time.sleep(0.2)
-                       X = kicker.getGroup(op.param1)             
-                       X.preventJoinByTicket = True
-                       kl.kickoutFromGroup(op.param1,[op.param2])
-                       kicker.kickoutFromGroup(op.param1,[op.param2])
-                       kl.leaveGroup(op.param1)
-                       kicker.updateGroup(X)
-                   except Exception, e:
-                            print e
                 if not op.param2 in Bots and admin:
                     try:
                         gs = ki.getGroup(op.param1)
@@ -2455,13 +2400,13 @@ def bot(op):
 #=================================================================
             elif msg.text in ["Protect:hight","protect:hight"]:
               if msg.from_ in admin:
-                if wait["protectionOn"] == True:
+                if wait["Protectgr"] == True:
                     if wait["lang"] == "JP":
                         cl.sendText(msg.to,"turned into high protection\n\n"+ datetime.today().strftime('%H:%M:%S'))
                     else:
                         cl.sendText(msg.to,"turned into high protection\n\n"+ datetime.today().strftime('%H:%M:%S'))
                 else:
-                    wait["protectionOn"] = True
+                    wait["Protectgr"] = True
                     if wait["lang"] == "JP":
                         cl.sendText(msg.to,"turned into high protection\n\n"+ datetime.today().strftime('%H:%M:%S'))
                     else:
@@ -2520,13 +2465,13 @@ def bot(op):
                         cl.sendText(msg.to,"welcome message off\n\n"+ datetime.today().strftime('%H:%M:%S'))
             elif msg.text in ["Protect:low","Protect:low"]:
               if msg.from_ in admin:
-                if wait["protectionOn"] == False:
+                if wait["Protectgr"] == False:
                     if wait["lang"] == "JP":
                         cl.sendText(msg.to,"turned into low protection\n\n"+ datetime.today().strftime('%H:%M:%S'))
                     else:
                         cl.sendText(msg.to,"turned into low protection\n\n"+ datetime.today().strftime('%H:%M:%S'))
                 else:
-                    wait["protectionOn"] = False
+                    wait["Protectgr"] = False
                     if wait["lang"] == "JP":
                         cl.sendText(msg.to,"turned into low protection\n\n"+ datetime.today().strftime('%H:%M:%S'))
                     else:
@@ -2744,10 +2689,65 @@ def bot(op):
                 else:md+="Protect QR : off\n"
                 if wait["welcomemsg"] == True: md+="welcome message : on\n"
                 else:md+="welcome message : off\n"
-                if wait["protectionOn"] == True: md+="Protection : hight\n\n"+ datetime.today().strftime('%H:%M:%S')
+                if wait["Protectgr"] == True: md+="􀔃􀆑lock􏿿   Block Group\n"
+                else: md+=" Block Group Off\n"
+                if wait["Protectcancl"] == True: md+="􀔃􀆑lock􏿿 Cancel All Invited\n"
+                else: md+=" Cancel All Invited Off\n"
+                if wait["Protectgr"] == True: md+="Protection : hight\n\n"+ datetime.today().strftime('%H:%M:%S')
                 else:md+="Protection : low\n\n"+ datetime.today().strftime('%H:%M:%S')
                 cl.sendText(msg.to,md)
 #========================================
+	    elif "Vn" in msg.text:
+                say = msg.text.replace("Vn","")
+                lang = 'id'
+                tts = gTTS(text=say, lang=lang)
+                tts.save("hasil.mp3")
+                cl.sendAudio(msg.to,"hasil.mp3")
+	    elif msg.text in ["Kalender","/waktu"]:
+                timeNow = datetime.now()
+                timeHours = datetime.strftime(timeNow,"(%H:%M)")
+                day = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday","Friday", "Saturday"]
+                hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"]
+                bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+                inihari = datetime.today()
+                hr = inihari.strftime('%A')
+                bln = inihari.strftime('%m')
+                for i in range(len(day)):
+                    if hr == day[i]: hasil = hari[i]
+                for k in range(0, len(bulan)):
+                    if bln == str(k): blan = bulan[k-1]
+                rst = hasil + ", " + inihari.strftime('%d') + " - " + blan + " - " + inihari.strftime('%Y') + "\nJam : [ " + inihari.strftime('%H:%M:%S') + " ]"
+                cl.sendText(msg.to, rst)
+            elif "Creat group" in msg.text:
+                thisgroup = cl.getGroups([msg.to])
+                Mids = [contact.mid for contact in thisgroup[0].members] 
+                mi_d = Mids[:33]
+                cl.createGroup("New", mi_d)
+                cl.sendText(msg.to,"Succes creat new group")
+            elif msg.text in ["Like:friend", "Bot like temen"]:
+                print "[Command]Like executed"
+                cl.sendText(msg.to,"pertamax")
+                try:
+                  likefriend()
+                except:
+                  pass
+	
+            elif wait["SetKey"]+"Set pap:" in msg.text:
+                wait["Pap"] = msg.text.replace(wait["SetKey"]+"Set pap:","")
+                cl.sendText(msg.to,"Pap Has Ben Set To")
+            elif msg.text in [wait["SetKey"]+".Pap",wait["SetKey"]+"Pap"]:
+                cl.sendImageWithURL(msg.to,wait["Pap"])
+
+	    elif "Cek zodiak " in msg.text:
+                tanggal = msg.text.replace("Cek zodiak ","")
+                r=requests.get('https://script.google.com/ macros/exec?service=AKfycbw7gKzP-WYV 2F5mc9RaR7yE3Ve1yN91Tjs91hp_jHSE02dSv9w&nama=ervan&tanggal='+tanggal)
+                data=r.text
+                data=json.loads(data)
+                lahir = data["data"]["lahir"]
+                usia = data["data"]["usia"]
+                ultah = data["data"]["ultah"]
+                zodiak = data["data"]["zodiak"]
+                cl.sendText(msg.to,"Tanggal Lahir: "+lahir+"\n\nUsia:"+usia+"\n\nUltah: "+ultah+"\n\nZodiak: "+zodiak)
 #------------------------------------------------
             elif "Time" in msg.text:
               if msg.from_ in admin:
