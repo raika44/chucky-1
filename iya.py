@@ -33,7 +33,7 @@ ks.loginResult()
 
 cl
 
-kd2 = kk = kb = ke = kc
+ki2 = kk = kb = ke = kc
 
 ks2 = kd = kt = ko = ka
 
