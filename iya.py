@@ -5047,7 +5047,6 @@ def bot(op):
 		        cl.sendText(msg.to, str(njer))
 #-----------------------------------------------
             elif 'apakah' in msg.text.lower():
-              if msg.from_ in admin:
                 tanya = msg.text.lower().replace("apakah","")
                 jawab = ("Ya","Tidak","Mungkin","Bisa jadi")
                 jawaban = random.choice(jawab)
