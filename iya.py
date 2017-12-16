@@ -31,13 +31,13 @@ ks = LINETCR.LINE()
 ks.login(token="EnNxXQwSecectsEAlQzb.672la4CfyuJmLCgFJdKosW.+BS1ivQK6xiA3sGlN4+T51p7vKa5GdKWOAjsVn9AAy4=")
 ks.loginResult()
 
-kk = ki = cl
+cl
 
-kb = ke = kc
+kd2 = kk = kb = ke = kc
 
-kt = ko = ka
+kd = kt = ko = ka
 
-ku = ks
+kk2 = kt2 = ki = ku = ks
 
 print "login success"
 reload(sys)
@@ -367,8 +367,8 @@ Setgroup =""" Privasi Menu V.1 􀔃􀄆red check mark􏿿
 [No Joinned]
 -- Joinn on/off
 """
-KAC=[cl,ki,kk,kc,ks,ka,kb,ko,ke,ku]
-DEF=[ka,ki,kk,ks,kb,ko,ke,kc,ku]
+KAC=[cl,ki,kk,kc,ks,ka,kb,ko,ke,ku,kt2]
+DEF=[ka,ki,kk,ks,kb,ko,ke,kc,ku,kt,ks2,ki2,kk2,kd]
 mid = cl.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
@@ -416,6 +416,7 @@ wait = {
     "autorein":True,
     "Protectjoin":False,
     "Protectcancl":False,
+    "Backup":False,
     "protectionOn":True,
     "atjointicket":True,
     "Pap":"http://kucingpedia.com/wp-content/uploads/2016/06/Gambar-Kucing-Gemuk-Lucu.jpg",
@@ -437,6 +438,102 @@ settings = {
 
 setTime = {}
 setTime = wait2['setTime']
+
+contact = cl.getProfile()
+backup = cl.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki.getProfile()
+backup = ki.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = kk.getProfile()
+backup = kk.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = kc.getProfile()
+backup = kc.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ka.getProfile()
+backup = ka.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = kb.getProfile()
+backup = kb.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ku.getProfile()
+backup = ku.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ke.getProfile()
+backup = ke.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ko.getProfile()
+backup = ko.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = kd.getProfile()
+backup = kd.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ks.getProfile()
+backup = ks.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = kt.getProfile()
+backup = kt.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = kt2.getProfile()
+backup = kt2.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ks2.getProfile()
+backup = ks2.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = ki2.getProfile()
+backup = ki2.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
+
+contact = kk2.getProfile()
+backup = kk2.getProfile()
+backup.displayName = contact.displayName
+backup.statusMessage = contact.statusMessage
+backup.pictureStatus = contact.pictureStatus
 
 
 
@@ -2991,6 +3088,32 @@ def bot(op):
                 cl.sendMessage(msg)
 
 #===============================================================
+            elif msg.text in ["Backup:on"]:
+              if msg.from_ in admin:
+                if wait["Backup"] == True:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"backup has been active\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"backup has been enable\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                else:
+                    wait["Backup"] = True
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"backup has been active\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"backup has been enable\n\n"+ datetime.today().strftime('%H:%M:%S'))
+            elif msg.text in ["Backup:off"]:
+              if msg.from_ in admin:
+                if wait["Backup"] == False:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"backup has been unactive\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"backup has been desable\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                else:
+                    wait["Backup"] = False
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"backup has been unactive\n\n"+ datetime.today().strftime('%H:%M:%S'))
+                    else:
+                        cl.sendText(msg.to,"backup has been desable\n\n"+ datetime.today().strftime('%H:%M:%S'))
             
             elif msg.text in ["Auto like:on"]:
               if msg.from_ in admin:
@@ -3349,6 +3472,41 @@ def bot(op):
                        ct.sendText(msg.to,"done spam bossque")
 
 #-----------------------------------------------
+            elif msg.text in ["Rejectall"]:
+              if msg.from_ in admin:
+                gid = cl.getGroupIdsInvited()
+                for i in gid:
+                    cl.rejectGroupInvitation(i)
+                if wait["lang"] == "JP":
+                    cl.sendText(msg.to,"All Invites has been Rejected")
+                else:
+                    cl.sendText(msg.to,"拒绝了全部的邀请。")
+            elif 'clean invites' in msg.text.lower():
+               if msg.from_ in admin:
+                if msg.toType == 2:
+                    X = cl.getGroup(msg.to)
+                    if X.invitee is not None:
+                        gInviMids = [contact.mid for contact in X.invitee]
+                        random.choice(KAC).cancelGroupInvitation(msg.to, gInviMids)
+                    else:
+                        if wait["lang"] == "JP":
+                            cl.sendText(msg.to,"No one is inviting。")
+                        else:
+                            cl.sendText(msg.to,"Sorry, nobody absent")
+                else:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Can not be used outside the group")
+                    else:
+                        cl.sendText(msg.to,"Not for use less than group")
+#================================================================================
+            elif 'clear invites' in msg.text.lower():
+	      if msg.from_ in admin:
+                if msg.toType == 2:
+                    group = cl.getGroup(msg.to)
+                    gMembMids = [contact.mid for contact in group.invitee]
+                    for _mid in gMembMids:
+                        random.choice(KAC).cancelGroupInvitation(msg.to,[_mid])
+                        cl.sendText(msg.to,"I pretended to cancel and canceled.")
          #----------------Fungsi Join Group Start-----------------------#
             elif msg.text in ["Sini dong","Kuy join","Ayo masuk","My waifu sini"]:
               if msg.from_ in admin:
@@ -3426,6 +3584,336 @@ def bot(op):
                   cl.updateGroup(G)
                   Ticket = cl.reissueGroupTicket(msg.to)
     #----------------------Fungsi Join Group Finish---------------#
+            elif "Bot1 backup" in msg.text:
+                if msg.from_ in admin:
+                        try:
+                            h = open('mydn.txt',"r")
+                            name = h.read()
+                            h.close()
+                            x = name
+                            profile = cl.getProfile()
+                            profile.displayName = x
+                            cl.updateProfile(profile)
+                            i = open('mysm.txt',"r")
+                            sm = i.read()
+                            i.close()
+                            y = sm
+                            cak = cl.getProfile()
+                            cak.statusMessage = y
+                            cl.updateProfile(cak)
+                            j = open('myps.txt',"r")
+                            ps = j.read()
+                            j.close()
+                            p = ps
+                            cl.updateProfilePicture(p)
+                            cl.sendText(msg.to, "Succes")
+                        except Exception as e:
+                            cl.sendText(msg.to,"Gagagl!")
+                            print e
+            elif "Bot2 backup" in msg.text:
+                 if msg.from_ in admin:
+                        try:
+                            h = open('mgydn.txt',"r")
+                            name = h.read()
+                            h.close()
+                            x = name
+                            profile = ki.getProfile()
+                            profile.displayName = x
+                            ki.updateProfile(profile)
+                            i = open('myesm.txt',"r")
+                            sm = i.read()
+                            i.close()
+                            y = sm
+                            cak = ki.getProfile()
+                            cak.statusMessage = y
+                            ki.updateProfile(cak)
+                            j = open('mypfs.txt',"r")
+                            ps = j.read()
+                            j.close()
+                            p = ps
+                            ki.updateProfilePicture(p)
+                            ki.sendText(msg.to, "Succes")
+                        except Exception as e:
+                            ki.sendText(msg.to,"Gagagl!")
+                            print e
+            elif "Bot3 backup" in msg.text:
+                if msg.from_ in admin:
+                        try:
+                            h = open('msgydn.txt',"r")
+                            name = h.read()
+                            h.close()
+                            x = name
+                            profile = kk.getProfile()
+                            profile.displayName = x
+                            kk.updateProfile(profile)
+                            i = open('mysfdgm.txt',"r")
+                            sm = i.read()
+                            i.close()
+                            y = sm
+                            cak = kk.getProfile()
+                            cak.statusMessage = y
+                            kk.updateProfile(cak)
+                            j = open('gymyps.txt',"r")
+                            ps = j.read()
+                            j.close()
+                            p = ps
+                            kk.updateProfilePicture(p)
+                            kk.sendText(msg.to, "Succes")
+                        except Exception as e:
+                            kk.sendText(msg.to,"Gagagl!")
+                            print e
+            elif "Bot4 backup" in msg.text:
+                if msg.from_ in admin:
+                        try:
+                            h = open('jhmydn.txt',"r")
+                            name = h.read()
+                            h.close()
+                            x = name
+                            profile = kc.getProfile()
+                            profile.displayName = x
+                            kc.updateProfile(profile)
+                            i = open('myhfsm.txt',"r")
+                            sm = i.read()
+                            i.close()
+                            y = sm
+                            cak = kc.getProfile()
+                            cak.statusMessage = y
+                            kc.updateProfile(cak)
+                            j = open('mypfhs.txt',"r")
+                            ps = j.read()
+                            j.close()
+                            p = ps
+                            kc.updateProfilePicture(p)
+                            kc.sendText(msg.to, "Succes")
+                        except Exception as e:
+                            kc.sendText(msg.to,"Gagagl!")
+                            print e
+            elif "Bot5 backup" in msg.text:
+                if msg.from_ in admin:
+                        try:
+                            h = open('madydn.txt',"r")
+                            name = h.read()
+                            h.close()
+                            x = name
+                            profile = ks.getProfile()
+                            profile.displayName = x
+                            ks.updateProfile(profile)
+                            i = open('mysgjm.txt',"r")
+                            sm = i.read()
+                            i.close()
+                            y = sm
+                            cak = ks.getProfile()
+                            cak.statusMessage = y
+                            ks.updateProfile(cak)
+                            j = open('myrdps.txt',"r")
+                            ps = j.read()
+                            j.close()
+                            p = ps
+                            ks.updateProfilePicture(p)
+                            ks.sendText(msg.to, "Succes")
+                        except Exception as e:
+                            ks.sendText(msg.to,"Gagagl!")
+                            print e
+            elif "Bot6 backup" in msg.text:
+                if msg.from_ in admin:
+                        try:
+                            h = open('mydnsgv.txt',"r")
+                            name = h.read()
+                            h.close()
+                            x = name
+                            profile = kt.getProfile()
+                            profile.displayName = x
+                            kt.updateProfile(profile)
+                            i = open('jhmysm.txt',"r")
+                            sm = i.read()
+                            i.close()
+                            y = sm
+                            cak = kt.getProfile()
+                            cak.statusMessage = y
+                            kt.updateProfile(cak)
+                            j = open('myiyps.txt',"r")
+                            ps = j.read()
+                            j.close()
+                            p = ps
+                            kt.updateProfilePicture(p)
+                            kt.sendText(msg.to, "Succes")
+                        except Exception as e:
+                            kt.sendText(msg.to,"Gagagl!")
+                            print e
+				
+            elif msg.text in ["Bot1 backup run"]:
+                if msg.from_ in admin:
+                    wek = cl.getContact(mid)
+                    a = wek.pictureStatus
+                    r = wek.displayName
+                    i = wek.statusMessage
+                    s = open('mydn.txt',"w")
+                    s.write(r)
+                    s.close()
+                    t = open('mysm.txt',"w")
+                    t.write(i)
+                    t.close()
+                    u = open('myps.txt',"w")
+                    u.write(a)
+                    u.close()
+                    cl.sendText(msg.to, "backup has been active")
+                    print wek
+                    print a
+                    print r
+                    print i
+            elif msg.text in ["Bot2 backup run"]:
+                if msg.from_ in admin:
+                    wek = ki.getContact(Amid)
+                    a = wek.pictureStatus
+                    r = wek.displayName
+                    i = wek.statusMessage
+                    s = open('mgydn.txt',"w")
+                    s.write(r)
+                    s.close()
+                    t = open('myesm.txt',"w")
+                    t.write(i)
+                    t.close()
+                    u = open('mypfs.txt',"w")
+                    u.write(a)
+                    u.close()
+                    ki.sendText(msg.to, "backup has been active")
+                    print wek
+                    print a
+                    print r
+                    print i
+            elif msg.text in ["Bot3 backup run"]:
+                if msg.from_ in admin:
+                    wek = kk.getContact(Bmid)
+                    a = wek.pictureStatus
+                    r = wek.displayName
+                    i = wek.statusMessage
+                    s = open('msgydn.txt',"w")
+                    s.write(r)
+                    s.close()
+                    t = open('mysfdgm.txt',"w")
+                    t.write(i)
+                    t.close()
+                    u = open('gymyps.txt',"w")
+                    u.write(a)
+                    u.close()
+                    kk.sendText(msg.to, "backup has been active")
+                    print wek
+                    print a
+                    print r
+                    print i
+            elif msg.text in ["Bot4 backup run"]:
+                if msg.from_ in admin:
+                    wek = kc.getContact(Cmid)
+                    a = wek.pictureStatus
+                    r = wek.displayName
+                    i = wek.statusMessage
+                    s = open('jhmydn.txt',"w")
+                    s.write(r)
+                    s.close()
+                    t = open('myhfsm.txt',"w")
+                    t.write(i)
+                    t.close()
+                    u = open('mypfhs.txt',"w")
+                    u.write(a)
+                    u.close()
+                    kc.sendText(msg.to, "backup has been active")
+                    print wek
+                    print a
+                    print r
+                    print i
+            elif msg.text in ["Bot5 backup run"]:
+                if msg.from_ in admin:
+                    wek = ks.getContact(Dmid)
+                    a = wek.pictureStatus
+                    r = wek.displayName
+                    i = wek.statusMessage
+                    s = open('madydn.txt',"w")
+                    s.write(r)
+                    s.close()
+                    t = open('mysgjm.txt',"w")
+                    t.write(i)
+                    t.close()
+                    u = open('myrdps.txt',"w")
+                    u.write(a)
+                    u.close()
+                    ks.sendText(msg.to, "backup has been active")
+                    print wek
+                    print a
+                    print r
+                    print i
+            elif msg.text in ["Bot6 backup run"]:
+                if msg.from_ in admin:
+                    wek = kt.getContact(Emid)
+                    a = wek.pictureStatus
+                    r = wek.displayName
+                    i = wek.statusMessage
+                    s = open('mydnsgv.txt',"w")
+                    s.write(r)
+                    s.close()
+                    t = open('jhmysm.txt',"w")
+                    t.write(i)
+                    t.close()
+                    u = open('myiyps.txt',"w")
+                    u.write(a)
+                    u.close()
+                    kt.sendText(msg.to, "backup has been active")
+                    print wek
+                    print a
+                    print r
+                    print i
+			
+            elif msg.text.lower() == 'gift1':
+              if msg.from_ in admin:
+                msg.contentType = 9
+                msg.contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '1'}
+                msg.text = None
+                cl.sendMessage(msg)
+            elif msg.text.lower() == 'gift2':
+              if msg.from_ in admin:
+                msg.contentType = 9
+                msg.contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '2'}
+                msg.text = None
+                ki.sendMessage(msg)
+            elif msg.text.lower() == 'gift3':
+                msg.contentType = 9
+                msg.contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '3'}
+                msg.text = None
+                kk.sendMessage(msg)
+            elif msg.text.lower() == 'gift4':
+              if msg.from_ in admin:
+                msg.contentType = 9
+                msg.contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '4'}
+                msg.text = None
+                kc.sendMessage(msg)
+            elif msg.text.lower() == 'gift5':
+              if msg.from_ in admin:
+                msg.contentType = 9
+                msg.contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '5'}
+                msg.text = None
+                kd.sendMessage(msg)
+            elif msg.text.lower() == 'gift6':
+              if msg.from_ in admin:
+                msg.contentType = 9
+                msg.contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58', 'PRDTYPE': 'THEME', 'MSGTPL': '6'}
+                msg.text = None
+                ke.sendMessage(msg)
+            elif msg.text.lower() == 'spam gift':
+              if msg.from_ in admin:
+                msg.contentType = 9
+                msg.contentMetadata={'PRDID': 'a0768339-c2d3-4189-9653-2909e9bb6f58',
+                                    'PRDTYPE': 'THEME',
+                                    'MSGTPL': '12'}
+                msg.text = None
+                ki.sendMessage(msg)
+                kk.sendMessage(msg)
+                kc.sendMessage(msg)
+                cl.sendMessage(msg)
+                ks.sendMessage(msg)
+                kt.sendMessage(msg)
+                kt2.sendMessage(msg)
+                ks2.sendMessage(msg)
+                ki2.sendMessage(msg)
+                ks2.sendMessage(msg)
 #========================================
             elif wait["SetKey"]+"Spam @" in msg.text:
                 _name = msg.text.replace(wait["SetKey"]+"Spam @","")
@@ -4190,13 +4678,6 @@ def bot(op):
                             except:
                                 ki.sendText(msg.to,"Error")
             #----------------Fungsi Banned User Target Finish-----------------------# 
-            elif msg.text in ["Simisimi on","Simisimi:on"]:
-                settings["simiSimi"][msg.to] = True
-                cl.sendText(msg.to," Simisimi Di Aktifkan")
-                
-            elif msg.text in ["Simisimi off","Simisimi:off"]:
-                settings["simiSimi"][msg.to] = False
-                cl.sendText(msg.to,"Simisimi Di Nonaktifkan")
             
             #----------------Fungsi Unbanned User Target Start-----------------------#
             elif "Unban @" in msg.text:
