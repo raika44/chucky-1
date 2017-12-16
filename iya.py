@@ -5070,8 +5070,8 @@ def bot(op):
                 p = random.choice(rnd)
                 cl.sendText(msg.to,p)
 		
-            elif ".kapan " in msg.text:
-                apk = msg.text.replace("/kapan ","")
+            elif "kapan " in msg.text:
+                apk = msg.text.replace("kapan ","")
                 rnd = ["kapan kapan","besok","satu abad lagi","Hari ini","Tahun depan","Minggu depan","Bulan depan","Sebentar lagi","Tidak Akan Pernah"]
                 p = random.choice(rnd)
                 cl.sendText(msg.to,p)
