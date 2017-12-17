@@ -4636,7 +4636,7 @@ def bot(op):
 
 #--------------------------------------------------------
             elif "Image " in msg.text:
-              if msg.to in wait["media"] == True:
+              if wait["media"] == True:
                  search = msg.text.replace("Image ","")
                  url = 'https://www.google.com/search?espv=2&biw=1366&bih=667&tbm=isch&oq=kuc&aqs=mobile-gws-lite.0.0l5&q=' + search
                  raw_html = (download_page(url))
