@@ -4251,7 +4251,7 @@ def bot(op):
                        cl.sendText(msg.to, str(e))
             elif 'Vidio ' in msg.text:
 	      if msg.from_ in admin:
-                  if msg.to in wait['media'] == True:
+                  if msg.to in wait["media"] == True:
                      try:
                          textToSearch = (msg.text).replace('Vidio ', "").strip()
                          query = urllib.quote(textToSearch)
@@ -4630,7 +4630,7 @@ def bot(op):
 
 #--------------------------------------------------------
             elif "Image " in msg.text:
-              if msg.to in wait['media'] == True:
+              if msg.to in wait["media"] == True:
                  search = msg.text.replace("Image ","")
                  url = 'https://www.google.com/search?espv=2&biw=1366&bih=667&tbm=isch&oq=kuc&aqs=mobile-gws-lite.0.0l5&q=' + search
                  raw_html = (download_page(url))
@@ -5023,7 +5023,7 @@ def bot(op):
                 except Exception as njer:
                 	cl.sendText(msg.to, str(njer))
             elif 'music ' in msg.text.lower():
-              if msg.to in wait['media'] == True:
+              if msg.to in wait["media"] == True:
                	 try:
                      songname = msg.text.lower().replace('music ','')
                      params = {'songname': songname}
@@ -5078,7 +5078,7 @@ def bot(op):
                 cl.sendAudio(msg.to,"hasil.mp3")
 #---------------------------------- SONG ---------------------------------------------------------------------- SONG ------------------------------------
 	    elif "/musik " in msg.text:
-              if msg.to in wait['media'] == True:
+              if msg.to in wait["media"] == True:
 					songname = msg.text.replace("/musik ","")
 					params = {"songname": songname}
 					r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
@@ -5109,7 +5109,7 @@ def bot(op):
                         cl.sendText(msg.to, str(wak))
                         
 	    elif "/musrik " in msg.text:
-              if msg.to in wait['media'] == True:
+              if msg.to in wait["media"] == True:
 					songname = msg.text.replace("/musrik ","")
 					params = {"songname": songname}
 					r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
