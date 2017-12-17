@@ -3547,7 +3547,7 @@ def bot(op):
                         cl.sendText(msg.to,"I pretended to cancel and canceled.")
          #----------------Fungsi Join Group Start-----------------------#
             elif msg.text in ["Sini dong","Kuy join","Ayo masuk","My waifu sini"]:
-              if msg.from_ in creator:
+              if msg.from_ in admin:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -4302,7 +4302,7 @@ def bot(op):
 
     #-------------Fungsi Leave Group Start---------------#
             elif msg.text in ["Bye all","Bye sayang"]:
-              if msg.from_ in creator:
+              if msg.from_ in admin:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
