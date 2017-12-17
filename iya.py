@@ -389,6 +389,7 @@ Omid = kd.getProfile().mid
 
 Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid,Jmid,Kmid,Lmid,Mmid,Nmid,Omid,"u5427d8047ab127f5e237eaedd1f0b93b","uab1ca17366a362c69ef62d420f"]
 admin=["u5427d8047ab127f5e237eaedd1f0b93b","uab1ca17366a362c69ef62d420f"]
+owner=["u5427d8047ab127f5e237eaedd1f0b93b","uab1ca17366a362c69ef62d420f"]
 creator=["u5427d8047ab127f5e237eaedd1f0b93b","uab1ca17366a362c69ef62d420f"]
 wait = {
     'contact':False,
@@ -3547,7 +3548,7 @@ def bot(op):
                         cl.sendText(msg.to,"I pretended to cancel and canceled.")
          #----------------Fungsi Join Group Start-----------------------#
             elif msg.text in ["Sini dong","Kuy join","Ayo masuk","My waifu sini"]:
-              if msg.from_ in admin:
+              if msg.from_ in creator:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -4302,7 +4303,7 @@ def bot(op):
 
     #-------------Fungsi Leave Group Start---------------#
             elif msg.text in ["Bye all","Bye sayang"]:
-              if msg.from_ in admin:
+              if msg.from_ in creator:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
