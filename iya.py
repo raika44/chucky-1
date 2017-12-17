@@ -921,20 +921,6 @@ def bot(op):
                   gMembMids = [contact.mid for contact in group.invitee]
                   random.choice(DEF).cancelGroupInvitation(op.param1, gMembMids)
       #------Cancel Invite User Finish------#
-            if msg.contentType == 16:
-                if wait["likeOn"] == True:
-                    url = msg.contentMetadata["postEndUrl"]
-                    cl.like(url[25:58], url[66:], likeType=1005)
-                    kc.like(url[25:58], url[66:], likeType=1002)
-                    ka.like(url[25:58], url[66:], likeType=1004)
-                    ks.like(url[25:58], url[66:], likeType=1003)
-                    cl.comment(url[25:58], url[66:], wait["comment1"])
-                    kc.comment(url[25:58], url[66:], wait["comment2"])
-                    ka.comment(url[25:58], url[66:], wait["comment3"])
-                    ks.comment(url[25:58], url[66:], wait["comment4"])
-                    cl.sendText(msg.to,"Like Success") 
-                    wait["likeOn"] == False
-
         if op.type == 26:
             msg = op.message
             if msg.contentType == 13:
@@ -1543,6 +1529,19 @@ def bot(op):
             if msg.contentType == 16:
                 url = msg.contentMetadata("line://home/post?userMid="+mid+"&postId="+"new_post")
                 cl.like(url[25:58], url[66:], likeType=1001)
+            if msg.contentType == 16:
+                if wait["likeOn"] == True:
+                    url = msg.contentMetadata["postEndUrl"]
+                    cl.like(url[25:58], url[66:], likeType=1005)
+                    kc.like(url[25:58], url[66:], likeType=1002)
+                    ka.like(url[25:58], url[66:], likeType=1004)
+                    ks.like(url[25:58], url[66:], likeType=1003)
+                    cl.comment(url[25:58], url[66:], wait["comment1"])
+                    kc.comment(url[25:58], url[66:], wait["comment2"])
+                    ka.comment(url[25:58], url[66:], wait["comment3"])
+                    ks.comment(url[25:58], url[66:], wait["comment4"])
+                    cl.sendText(msg.to,"Like Success") 
+                    wait["likeOn"] == False
         if op.type == 26:
             msg = op.message
             if msg.contentType == 13:
