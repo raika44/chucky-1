@@ -1513,6 +1513,11 @@ def bot(op):
                     pass
                 else:
                     cl.cancelGroupInvitation(op.param1, matched_list)
+        if op.type == 15:
+            if wait["autorein"] == True:
+               if op.param2 in admin:
+                  kicker = random.choice(KAC)
+                  kicker.inviteIntoGroup(op.param1,[op.param2])
                     
         if op.type == 22:
             if wait["leaveRoom"] == True:
