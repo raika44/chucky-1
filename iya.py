@@ -4251,20 +4251,20 @@ def bot(op):
                        cl.sendText(msg.to, str(e))
             elif 'Vidio ' in msg.text:
 	      if msg.from_ in admin:
-                   if msg.to in wait['media'] == True:
-                      try:
-                           textToSearch = (msg.text).replace('Vidio ', "").strip()
-                           query = urllib.quote(textToSearch)
-                  	   url = "https://www.youtube.com/results?search_query=" + query
-                 	   response = urllib2.urlopen(url)
-                  	   html = response.read()
-                   	   soup = BeautifulSoup(html, "html.parser")
-                    	   results = soup.find(attrs={'class':'yt-uix-tile-link'})
-                  	   ght=('https://www.youtube.com' + results['href'])
-			   cl.sendVideoWithURL(msg.to,ght)
-               	      except:
-                   	      cl.sendText(msg.to,"Could not find it")
-		     else:
+                  if msg.to in wait['media'] == True:
+                     try:
+                         textToSearch = (msg.text).replace('Vidio ', "").strip()
+                         query = urllib.quote(textToSearch)
+                  	 url = "https://www.youtube.com/results?search_query=" + query
+                 	 response = urllib2.urlopen(url)
+                  	 html = response.read()
+                   	 soup = BeautifulSoup(html, "html.parser")
+                    	 results = soup.find(attrs={'class':'yt-uix-tile-link'})
+                  	 ght=('https://www.youtube.com' + results['href'])
+			 l.sendVideoWithURL(msg.to,ght)
+               	     except:
+                   	    cl.sendText(msg.to,"Could not find it")
+		    else:
 			  cl.sendText(msg.to,"turn on media")
             elif ("Ban repeat " in msg.text):
               if msg.from_ in admin:
