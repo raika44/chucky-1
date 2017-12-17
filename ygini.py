@@ -27,9 +27,6 @@ ka = LINETCR.LINE()
 ka.login(qr=True)
 ka.loginResult()
 
-ks = LINETCR.LINE()
-ks.login(qr=True)
-ks.loginResult()
 
 ks = cl
 
@@ -386,9 +383,9 @@ Mmid = ks2.getProfile().mid
 Nmid = kk2.getProfile().mid
 Omid = kd.getProfile().mid
 
-Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid,Jmid,Kmid,Lmid,Mmid,Nmid,Omid,"u110b2695b44468674917045f9b8858f9","uab1ca173166a362c69ef62d420f9f784"]
-admin=["u110b2695b44468674917045f9b8858f9","uab1ca173166a362c69ef62d420f9f784","u43ae254af00e6580f33a3e1405ca47de"]
-creator=["u110b2695b44468674917045f9b8858f9","uab1ca173166a362c69ef62d420f9f784"]
+Bots=[mid,Amid,Bmid,Cmid,Dmid,Emid,Fmid,Gmid,Hmid,Imid,Jmid,Kmid,Lmid,Mmid,Nmid,Omid,"u110b2695b44468674917045f9b8858f9","u9897ee93b078f18a7545fd20c643407c","uab1ca173166a362c69ef62d420f9f784"]
+admin=["u110b2695b44468674917045f9b8858f9","uab1ca173166a362c69ef62d420f9f784","u9897ee93b078f18a7545fd20c643407c"]
+creator=["u9897ee93b078f18a7545fd20c643407c9"]
 wait = {
     'contact':False,
     'autoJoin':True,
