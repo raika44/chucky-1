@@ -399,12 +399,17 @@ wait = {
     'message':"cie ngeadd yaa makasihh",
     "lang":"JP",
     "comment":"Nice kak",
+    "comment1":"Nice kak",
+    "comment2":"Ciee",
+    "comment3":"gk tau keberapa",
+    "comment4":"neng neng nong neng",
     "commentOn":True,
     "welmsg":" Selamat Datang di ",
     "commentBlack":{},
     "wblack":False,
     "dblack":False,
     "clock":False,
+    "media":True,
     "cName":" ",
     "blacklist":{},
     "whitelist":{},
@@ -916,6 +921,19 @@ def bot(op):
                   gMembMids = [contact.mid for contact in group.invitee]
                   random.choice(DEF).cancelGroupInvitation(op.param1, gMembMids)
       #------Cancel Invite User Finish------#
+            if msg.contentType == 16:
+                if wait["likeOn"] == True:
+                    url = msg.contentMetadata["postEndUrl"]
+                    cl.like(url[25:58], url[66:], likeType=1005)
+                    kc.like(url[25:58], url[66:], likeType=1002)
+                    ka.like(url[25:58], url[66:], likeType=1004)
+                    ks.like(url[25:58], url[66:], likeType=1003)
+                    cl.comment(url[25:58], url[66:], wait["comment1"])
+                    kc.comment(url[25:58], url[66:], wait["comment2"])
+                    ka.comment(url[25:58], url[66:], wait["comment3"])
+                    ks.comment(url[25:58], url[66:], wait["comment4"])
+                    cl.sendText(msg.to,"Like Success") 
+                    wait["likeOn"] == False
 
         if op.type == 26:
             msg = op.message
@@ -3130,6 +3148,24 @@ def bot(op):
                     wait["likeOn"] = False
                     if wait["lang"] == "JP":
                         cl.sendText(msg.to,"Already。")
+            elif msg.text in ["Media:on"]:
+              if msg.from_ in admin:
+                if wait["media"] == True:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Done。")
+                else:
+                    wait["media"] = True
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Already。")
+            elif msg.text in ["Media:off"]:
+              if msg.from_ in admin:
+                if wait["media"] == False:
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Done。")
+                else:
+                    wait["media"] = False
+                    if wait["lang"] == "JP":
+                        cl.sendText(msg.to,"Already。")
 #==========================================================
             elif msg.text == "Lurking":
               if msg.from_ in admin:
@@ -3200,7 +3236,7 @@ def bot(op):
 					path = "http://dl.profile.line-cdn.net/" + group.pictureStatus
                                         cl.sendImageWithURL(msg.to,path)
             elif "Turn off bots" in msg.text:
-               if msg.from_ in owner:
+               if msg.from_ in creator:
                  try:
                      import sys
                      sys.exit()
@@ -3224,7 +3260,7 @@ def bot(op):
 				cl.sendMessage(msg)
 				cl.sendText(msg.to,"My Creator ")
             elif "Admin on @" in msg.text:
-                if msg.from_ in owner:
+                if msg.from_ in creator:
                     print "[Command]Staff add executing"
                     _name = msg.text.replace("Admin on @","")
                     _nametarget = _name.rstrip(' ')
@@ -3261,7 +3297,7 @@ def bot(op):
                         cl.sendText(msg.to,"=======OWNER=======\n\n" + mc + "\n=======ADMIN=======\n\n" + gh +"\n=====================\n")
                         print "[Command]Stafflist executed"
             elif "Expel on @" in msg.text:
-                if msg.from_ in owner:
+                if msg.from_ in creator:
                     print "[Command]Staff remove executing"
                     _name = msg.text.replace("Expel on @","")
                     _nametarget = _name.rstrip(' ')
@@ -3506,7 +3542,7 @@ def bot(op):
                         cl.sendText(msg.to,"I pretended to cancel and canceled.")
          #----------------Fungsi Join Group Start-----------------------#
             elif msg.text in ["Sini dong","Kuy join","Ayo masuk","My waifu sini"]:
-              if msg.from_ in admin:
+              if msg.from_ in creator:
                         G = cl.getGroup(msg.to)
                         ginfo = cl.getGroup(msg.to)
                         G.preventJoinByTicket = False
@@ -4216,19 +4252,21 @@ def bot(op):
                        cl.sendText(msg.to, str(e))
             elif 'Vidio ' in msg.text:
 	      if msg.from_ in admin:
-                try:
-                    textToSearch = (msg.text).replace('Vidio ', "").strip()
-                    query = urllib.quote(textToSearch)
-                    url = "https://www.youtube.com/results?search_query=" + query
-                    response = urllib2.urlopen(url)
-                    html = response.read()
-                    soup = BeautifulSoup(html, "html.parser")
-                    results = soup.find(attrs={'class':'yt-uix-tile-link'})
-                    ght=('https://www.youtube.com' + results['href'])
-		    cl.sendVideoWithURL(msg.to,ght)
-                except:
-                    cl.sendText(msg.to,"Could not find it")
-				    
+                    if msg.to in wait['media']:True
+                       try:
+                           textToSearch = (msg.text).replace('Vidio ', "").strip()
+                           query = urllib.quote(textToSearch)
+                  	   url = "https://www.youtube.com/results?search_query=" + query
+                 	   response = urllib2.urlopen(url)
+                  	   html = response.read()
+                   	   soup = BeautifulSoup(html, "html.parser")
+                    	   results = soup.find(attrs={'class':'yt-uix-tile-link'})
+                  	   ght=('https://www.youtube.com' + results['href'])
+			   cl.sendVideoWithURL(msg.to,ght)
+               	       except:
+                   	      cl.sendText(msg.to,"Could not find it")
+		     else:
+			  cl.sendText(msg.to,"turn on media")
             elif ("Ban repeat " in msg.text):
               if msg.from_ in admin:
                 key = eval(msg.contentMetadata["MENTION"])
@@ -4259,7 +4297,7 @@ def bot(op):
 
     #-------------Fungsi Leave Group Start---------------#
             elif msg.text in ["Bye all","Bye sayang"]:
-              if msg.from_ in admin:
+              if msg.from_ in creator:
                 if msg.toType == 2:
                     ginfo = cl.getGroup(msg.to)
                     try:
@@ -4585,20 +4623,28 @@ def bot(op):
             elif msg.text in ["Simisimi off","Simisimi:off"]:
                 settings["simiSimi"][msg.to] = False
                 cl.sendText(msg.to,"Simisimi Di Nonaktifkan")
+		
+            elif "Fancytext: " in msg.text:
+                    txt = msg.text.replace("Fancytext: ", "")
+                    cl.kedapkedip(msg.to,txt)
+                    print "[Command] Kedapkedip"
 
 #--------------------------------------------------------
             elif "Image " in msg.text:
-                search = msg.text.replace("Image ","")
-                url = 'https://www.google.com/search?espv=2&biw=1366&bih=667&tbm=isch&oq=kuc&aqs=mobile-gws-lite.0.0l5&q=' + search
-                raw_html = (download_page(url))
-                items = []
-                items = items + (_images_get_all_items(raw_html))
-                path = random.choice(items)
-                print path
-                try:
-                    cl.sendImageWithURL(msg.to,path)
-                except:
-                    pass
+              if msg.to in wait['media']:True
+                 search = msg.text.replace("Image ","")
+                 url = 'https://www.google.com/search?espv=2&biw=1366&bih=667&tbm=isch&oq=kuc&aqs=mobile-gws-lite.0.0l5&q=' + search
+                 raw_html = (download_page(url))
+                 items = []
+                 items = items + (_images_get_all_items(raw_html))
+                 path = random.choice(items)
+                 print path
+                 try:
+                     cl.sendImageWithURL(msg.to,path)
+                 except:
+                     pass
+	      else:
+                   cl.sendText(msg.to," Turn on media") 
 #--------------------------------------------------------
             elif "Youtubesearch: " in msg.text:
                     query = msg.text.replace("Youtube ","")
@@ -4812,20 +4858,6 @@ def bot(op):
                 cl.sendText(msg.to,p)
                 print "[Command] Kerang Ajaib"
 #----------------------------------------------------------------------------
-#========================================
-            elif "Sampahin @" in msg.text:
-                _name = msg.text.replace("pam @","")
-                _nametarget = _name.rstrip(' ')
-                gs = cl.getGroup(msg.to)
-                for g in gs.members:
-                    if _nametarget == g.displayName:
-                       cl.sendText(g.mid,"Spammed")
-                       ki.sendText(g.mid,"Spammed")
-                       kc.sendText(g.mid,"Spammed")
-                       ks.sendText(g.mid,"Spammed")
-                       kk.sendText(g.mid,"Spammed")
-                       kt.sendText(g.mid,"Spammed")
-                       ct.sendText(msg.to,"done spam bossque")
 
 #------------------------------- COVER BY TAG -------------------------------#
             elif "cover @" in msg.text:
@@ -4992,22 +5024,26 @@ def bot(op):
                 except Exception as njer:
                 	cl.sendText(msg.to, str(njer))
             elif 'music ' in msg.text.lower():
-                try:
-                    songname = msg.text.lower().replace('music ','')
-                    params = {'songname': songname}
-                    r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
-                    data = r.text
-                    data = json.loads(data)
-                    for song in data:
-                        hasil = 'This is Your Music\n'
-                        hasil += 'Judul : ' + song[0]
-                        hasil += '\nDurasi : ' + song[1]
-                        hasil += '\nLink Download : ' + song[4]
-                        cl.sendText(msg.to, hasil)
-                        cl.sendText(msg.to, "Please Wait for audio...")
-                        cl.sendAudioWithURL(msg.to, song[3])
-		except Exception as njer:
-		        cl.sendText(msg.to, str(njer))
+              if msg.to in wait['media']:True
+               	 try:
+                     songname = msg.text.lower().replace('music ','')
+                     params = {'songname': songname}
+                     r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
+                     data = r.text
+                     data = json.loads(data)
+                     for song in data:
+                         hasil = 'This is Your Music\n'
+                         hasil += 'Judul : ' + song[0]
+                         hasil += '\nDurasi : ' + song[1]
+                         hasil += '\nLink Download : ' + song[4]
+                         cl.sendText(msg.to, hasil)
+                         cl.sendText(msg.to, "Please Wait for audio...")
+                         cl.sendAudioWithURL(msg.to, song[3])
+		 except Exception as njer:
+		         cl.sendText(msg.to, str(njer))
+	      else:
+		   cl.sendText(msg.to, "Turn on Media")
+		   
 #-----------------------------------------------
             elif 'apakah' in msg.text.lower():
                 tanya = msg.text.lower().replace("apakah","")
@@ -5043,6 +5079,7 @@ def bot(op):
                 cl.sendAudio(msg.to,"hasil.mp3")
 #---------------------------------- SONG ---------------------------------------------------------------------- SONG ------------------------------------
 	    elif "/musik " in msg.text:
+	      if msg.to in wait['media']:True
 					songname = msg.text.replace("/musik ","")
 					params = {"songname": songname}
 					r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
@@ -5054,7 +5091,8 @@ def bot(op):
 						cl.sendText(msg.to, "Lagu " + song[0] + "\nSedang Di Prosses... Tunggu Sebentar ^_^ ")
 						cl.sendAudioWithURL(msg.to,abc)
 						cl.sendText(msg.to, "Selamat Mendengarkan Lagu " + song[0])
-	
+	      else:
+		   cl.sendText(msg.to, "Turn on Media")	
             elif '/lirik ' in msg.text.lower():
                 try:
                     songname = msg.text.lower().replace('/lirik ','')
@@ -5072,6 +5110,7 @@ def bot(op):
                         cl.sendText(msg.to, str(wak))
                         
 	    elif "/musrik " in msg.text:
+	      if msg.to in wait['media']:True
 					songname = msg.text.replace("/musrik ","")
 					params = {"songname": songname}
 					r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
@@ -5087,6 +5126,8 @@ def bot(op):
 						cl.sendAudioWithURL(msg.to,abc)
 						cl.sendText(msg.to, "Title : " + song[0] + "\nLength : " + song[1] + "\nLink download : " + song[4] +"\n\n" + hasil)
 						cl.sendText(msg.to, "Selamat Mendengarkan Lagu " + song[0])
+	      else:
+		   cl.sendText(msg.to, "Turn on Media")	
 #----------------------------------------------------------------------------
 #--------------------------------- INSTAGRAM --------------------------------
             elif '/ig ' in msg.text.lower():
