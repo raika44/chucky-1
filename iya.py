@@ -4264,8 +4264,8 @@ def bot(op):
 			 l.sendVideoWithURL(msg.to,ght)
                	     except:
                    	    cl.sendText(msg.to,"Could not find it")
-		    else:
-			  cl.sendText(msg.to,"turn on media")
+		  else:
+		       cl.sendText(msg.to,"turn on media")
             elif ("Ban repeat " in msg.text):
               if msg.from_ in admin:
                 key = eval(msg.contentMetadata["MENTION"])
