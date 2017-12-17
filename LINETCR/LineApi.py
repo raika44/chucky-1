@@ -41,16 +41,16 @@ class LINE:
 
     self.authToken = self.Talk.authToken
     self.cert = self.Talk.cert
-    
-    self.Poll = Poll(self.authToken)
-    #self.channel = channel.Channel(self.authToken)
-    #self.channel.login()
 
-    #self.mid = self.channel.mid
-    #self.channel_access_token = self.channel.channel_access_token
-    #self.token = self.channel.token
-    #self.obs_token = self.channel.obs_token
-    #self.refresh_token = self.channel.refresh_token
+    self.Poll = Poll(self.authToken)
+    self.channel = channel.Channel(self.authToken)
+    self.channel.login()
+
+    self.mid = self.channel.mid
+    self.channel_access_token = self.channel.channel_access_token
+    self.token = self.channel.token
+    self.obs_token = self.channel.obs_token
+    self.refresh_token = self.channel.refresh_token
 
 
   """User"""
@@ -319,4 +319,4 @@ class LINE:
       print("\nMid Kamu -> " + prof.mid)
       print("\nNama Akun -> " + prof.displayName)
       print("\nAuthToken Kamu -> " + self.authToken)
-      print("\nCert Kamu -> " + self.cert if self.cert is not None else "\nMau Tanya Lebih?\nline://ti/p/~yapuyy")
+      print("\nCert Kamu -> " + self.cert if self.cert is not None else "\nMau Tanya Lebih?\nline://ti/p/~ery.san")
