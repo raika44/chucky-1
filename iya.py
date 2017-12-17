@@ -142,6 +142,7 @@ helpMessage= """\n
 |╬| Auto blockqr:on/off
 |╬| Namelock:on/off
 |╬| Auto add:on/off
+|╬| Media:on/off
 |╬| Check message
 |╬| Add message:
 |╬| Comment:on/off
@@ -4251,7 +4252,7 @@ def bot(op):
                        cl.sendText(msg.to, str(e))
             elif 'Vidio ' in msg.text:
 	      if msg.from_ in admin:
-                  if msg.to in wait["media"] == True:
+                  if wait["media"] == True:
                      try:
                          textToSearch = (msg.text).replace('Vidio ', "").strip()
                          query = urllib.quote(textToSearch)
@@ -5023,7 +5024,7 @@ def bot(op):
                 except Exception as njer:
                 	cl.sendText(msg.to, str(njer))
             elif 'music ' in msg.text.lower():
-              if msg.to in wait["media"] == True:
+              if wait["media"] == True:
                	 try:
                      songname = msg.text.lower().replace('music ','')
                      params = {'songname': songname}
@@ -5078,7 +5079,7 @@ def bot(op):
                 cl.sendAudio(msg.to,"hasil.mp3")
 #---------------------------------- SONG ---------------------------------------------------------------------- SONG ------------------------------------
 	    elif "/musik " in msg.text:
-              if msg.to in wait["media"] == True:
+              if wait["media"] == True:
 					songname = msg.text.replace("/musik ","")
 					params = {"songname": songname}
 					r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
@@ -5109,7 +5110,7 @@ def bot(op):
                         cl.sendText(msg.to, str(wak))
                         
 	    elif "/musrik " in msg.text:
-              if msg.to in wait["media"] == True:
+              if wait["media"] == True:
 					songname = msg.text.replace("/musrik ","")
 					params = {"songname": songname}
 					r = requests.get('http://ide.fdlrcn.com/workspace/yumi-apis/joox?' + urllib.urlencode(params))
