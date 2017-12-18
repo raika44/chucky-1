@@ -411,8 +411,9 @@ wait = {
     "wblacklist":False,
     "dblacklist":False,
     "Protectgr":True,
+    "AutoKick":True,
     "likeOn":False,
-    "welcomemsg":True,
+    "welcomemsg":False,
     "winvite":False,
     "Protectjoin":False,
     "Protectcancl":False,
@@ -887,6 +888,45 @@ def bot(op):
                    random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
                    random.choice(DEF).inviteFromGroup(op.param1,[op.param3])		
                    random.choice(DEF).updateGroup(G)
+        if op.type == 19:
+		if wait["AutoKick"] == True:
+		    try:
+			if op.param3 in Bots:
+			    pass
+		        if op.param2 in Bots:
+			    pass
+		        else:
+		            random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+                        if op.param2 in wait["blacklist"]:
+                            pass
+		        else:
+			    random.choice(DEF).inviteIntoGroup(op.param1,[op.param3])
+		    except:
+		        try:
+			    if op.param2 not in Bots:
+                                random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+			    if op.param2 in wait["blacklist"]:
+			        pass
+			    else:
+			        random.choice(KAC).inviteIntoGroup(op.param1,[op.param3])
+		        except:
+			    print ("client Kick regulation or Because it does not exist in the group\ngid=["+op.param1+"]\nmid=["+op.param2+"]")
+                        if op.param2 in wait["blacklist"]:
+                            pass
+                        else:
+			    if op.param2 in Bots:
+			        pass
+			    else:
+                                wait["blacklist"][op.param2] = True
+		    if op.param2 in wait["blacklist"]:
+                        pass
+                    else:
+		        if op.param2 in Bots:
+			    pass
+		        else:
+                            wait["blacklist"][op.param2] = True
+		else:
+		    pass
         #------Protect Group Kick finish-----#
 		
         if op.type == 15:
@@ -4276,6 +4316,13 @@ def bot(op):
                       cl.sendText(msg.to,"Succes Banned ")
                    except:
                       pass
+	    elif "Autokick on" in msg.text:
+		     wait["AutoKick"] = True
+		     cl.sendText(msg.to,"Auto Kick Sudah Aktif")
+
+	    elif "Autokick off" in msg.text:
+		     wait["AutoKick"] = False
+		     cl.sendText(msg.to,"Auto Kick Sudah Di Nonaktifkan")
 
 #========================================
             elif "Update welcome:" in msg.text:
