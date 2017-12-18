@@ -1134,7 +1134,7 @@ def bot(op):
         if op.type == 19:
            if op.param3 in admin:
               random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
-              cl.inviteIntoGroup(op.param1,admin)
+              random.choice(KAC).inviteIntoGroup(op.param1,admin)
            else:
                pass
 
