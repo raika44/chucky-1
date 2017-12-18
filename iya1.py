@@ -363,7 +363,7 @@ Setgroup =""" Privasi Menu V.1 􀔃􀄆red check mark􏿿
 -- Joinn on/off
 """
 KAC=[cl,ki2,kk,ke,kc,kb]
-DEF=[ka,ki,ks,ko,ku,kt,ks2,,kk2,kd]
+DEF=[ka,ki,ks,ko,ku,kt,ks2,kk2,kd]
 mid = cl.getProfile().mid
 Amid = ki.getProfile().mid
 Bmid = kk.getProfile().mid
