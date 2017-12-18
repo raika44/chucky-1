@@ -27,9 +27,6 @@ class LINE:
       self.Talk.login(mail, passwd, callback=callback)
     elif resp == 2:
       self.Talk.login(mail,passwd,cert, callback=callback)
-    elif resp == 3:
-      self.Talk.TokenLogin(token)
-    elif resp == 4:
       self.Talk.qrLogin(callback)
     else:
       raise Exception("invalid arguments")
