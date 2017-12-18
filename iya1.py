@@ -885,7 +885,7 @@ def bot(op):
                    G = ka.getGroup(op.param1)
                    G.preventJoinByTicket = True
                    random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
-                   random.choice(DEF).inviteFromGroup(op.param1,[op.param2])		
+                   random.choice(DEF).inviteFromGroup(op.param1,[op.param3])		
                    random.choice(DEF).updateGroup(G)
         #------Protect Group Kick finish-----#
 		
