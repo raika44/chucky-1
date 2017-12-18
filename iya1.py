@@ -1087,8 +1087,8 @@ def bot(op):
        
         if op.type == 19:
            if op.param2 not in Bots:
-              random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
-              random.choice(DEF).inviteIntoGroup(op.param1,[op.param3])
+              random.choice(KAC).kickoutFromGroup(op.param1,[op.param2])
+              random.choice(KAC).inviteIntoGroup(op.param1,[op.param3])
            else: 
                pass
 
