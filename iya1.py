@@ -414,7 +414,6 @@ wait = {
     "likeOn":False,
     "welcomemsg":True,
     "winvite":False,
-    "autorein":True,
     "Protectjoin":False,
     "Protectcancl":False,
     "Backup":False,
@@ -886,6 +885,7 @@ def bot(op):
                    G = ka.getGroup(op.param1)
                    G.preventJoinByTicket = True
                    random.choice(DEF).kickoutFromGroup(op.param1,[op.param2])
+                   random.choice(DEF).inviteFromGroup(op.param1,[op.param2]		
                    random.choice(DEF).updateGroup(G)
         #------Protect Group Kick finish-----#
 		
@@ -1507,12 +1507,7 @@ def bot(op):
                     pass
                 else:
                     cl.cancelGroupInvitation(op.param1, matched_list)
-        if op.type == 15:
-            if wait["autorein"] == True:
-               if op.param2 in admin:
-                  kicker = random.choice(KAC)
-                  kicker.inviteIntoGroup(op.param1,[op.param2])
-                    
+                       
         if op.type == 22:
             if wait["leaveRoom"] == True:
                 cl.leaveRoom(op.param1)
